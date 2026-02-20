@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cozy Brown Café</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5e6d3;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            background-color: #5c3a21;
+            color: white;
+            padding: 25px;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .menu {
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: #fff8f0;
+            display: inline-block;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 20px;
+            width: 220px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        button {
+            background-color: #8b5e3c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #6f4b2f;
+        }
+
+        .cart {
+            margin-top: 50px;
+            padding: 25px;
+            background-color: #e6d2bf;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .checkout-form {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>☕ Cozy Brown Café 🤎</h1>
+
+<div class="menu">
+
+    <div class="card">
+        <h3>Latte</h3>
+        <p>$5</p>
+        <button onclick="addToCart('Latte', 5)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <h3>Croissant</h3>
+        <p>$3</p>
+        <button onclick="addToCart('Croissant', 3)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <h3>Hot Chocolate</h3>
+        <p>$4</p>
+        <button onclick="addToCart('Hot Chocolate', 4)">Add to Cart</button>
+    </div>
+
+</div>
+
+<div class="cart">
+    <h2>🛒 Your Cart</h2>
+    <p id="cart-items">Nothing yet...</p>
+    <p>Total: $<span id="total">0</span></p>
+    <button onclick="showCheckout()">Proceed to Checkout</button>
+
+    <div class="checkout-form" id="checkout-form">
+        <h3>💳 Payment Details</h3>
+        <input type="text" placeholder="Cardholder Name"><br>
+        <input type="text" placeholder="Card Number"><br>
+        <input type="text" placeholder="Expiry Date (MM/YY)"><br>
+        <input type="text" placeholder="CVV"><br>
+        <button onclick="checkout()">Pay Now</button>
+    </div>
+</div>
+
+<script>
+let total = 0;
+let items = "";
+
+function addToCart(name, price) {
+    items += name + " - $" + price + "<br>";
+    total += price;
+
+    document.getElementById("cart-items").innerHTML = items;
+    document.getElementById("total").innerText = total;
+}
+
+function showCheckout() {
+    document.getElementById("checkout-form").style.display = "block";
+}
+
+function checkout() {
+    alert("Payment Successful! ☕🤎 Thank you for visiting Cozy Brown Café!");
+    // reset cart
+    items = "";
+    total = 0;
+    document.getElementById("cart-items").innerHTML = "Nothing yet...";
+    document.getElementById("total").innerText = total;
+    document.getElementById("checkout-form").style.display = "none";
+}
+</script>
+
+</body>
+</html>
